@@ -1,12 +1,17 @@
 package rocketBase;
 
+import java.util.ArrayList;
+
 import org.apache.poi.ss.formula.functions.*;
+
+import exceptions.RateException;
+import rocketDomain.RateDomainModel;
 
 public class RateBLL {
 
 	private static RateDAL _RateDAL = new RateDAL();
 	
-	static double getRate(int GivenCreditScore) 
+	public static double getRate(int GivenCreditScore) throws RateException 
 	{
 		//TODO - RocketBLL RateBLL.getRate - make sure you throw any exception
 		
@@ -19,7 +24,22 @@ public class RateBLL {
 		
 		//TODO - RocketBLL RateBLL.getRate
 		//			obviously this should be changed to return the determined rate
-		return 0;
+		
+		ArrayList<RateDomainModel> rateArray = RateDAL.getAllRates();
+		double interest=-1;
+		for(RateDomainModel rate: rateArray){
+			if(GivenCreditScore >= rate.getiMinCreditScore()){
+				interest = rate.getdInterestRate();
+			}
+			else{
+				break;
+			}
+		}
+		if (interest == -1){
+			throw new RateException(rateArray.remove(0));
+		}
+		return interest;
+			
 		
 		
 	}

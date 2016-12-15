@@ -1,15 +1,43 @@
 package rocket.app.view;
 
+import java.util.LinkedList;
+
 import eNums.eAction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import rocket.app.MainApp;
 import rocketCode.Action;
 import rocketData.LoanRequest;
 
 public class MortgageController {
 
+	@FXML
 	private MainApp mainApp;
+	@FXML
+	private TextField creditScoreField;
+	@FXML
+	private TextField loanTotalField;
+	@FXML
+	private TextField balloonAmountField;
+	@FXML
+	private TextField incomeField;
+	@FXML
+	private TextField expensesField;
+	@FXML
+	private ComboBox<String> loanPeriodField;
+	@FXML
+	private ComboBox<String> payPeriodField;
+	@FXML
+	private Label outputField;
+	
+	LinkedList<String> periods = new LinkedList<String>();
+	periods.add("30 Years");
+	periods.add("15 Years");
+	
+	loanPeriodField.set
 	
 	//	TODO - RocketClient.RocketMainController
 	

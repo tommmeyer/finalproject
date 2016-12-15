@@ -9,12 +9,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
+//these next two imports are listed as 'unused'
 import rocketDomain.RateDomainModel;
 import util.HibernateUtil;
 
 public class RateDAL {
-
+//and this next line states that RateDomainModel is not imported
 	public static ArrayList<RateDomainModel> getAllRates()
 	{		
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -28,13 +28,14 @@ public class RateDAL {
 			//TODO - RocketDALRateDAL.getAllRates
 			//			probably not a bad idea to sort the results...  Add an OrderBy
 			//			example can be found here:
-			//  		http://www.tutorialspoint.com/hibernate/hibernate_query_language.htm			
+			//  		http://www.tutorialspoint.com/hibernate/hibernate_query_language.htm	
+			
 			List lstRates = session.createQuery("FROM RateDomainModel").list();
 			for (Iterator iterator = lstRates.iterator(); iterator.hasNext();) {
 				RateDomainModel rte = (RateDomainModel) iterator.next();
 				alRates.add(rte);
 			}
-			
+			Query sort = session.createQuery("From RateDomainMode r ORDER BY r.iMinCreditScore asc");
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)

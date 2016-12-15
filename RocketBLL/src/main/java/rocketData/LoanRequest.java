@@ -1,6 +1,7 @@
 package rocketData;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 public class LoanRequest implements Serializable {
 
@@ -10,6 +11,15 @@ public class LoanRequest implements Serializable {
 	private int iCreditScore;
 	private int iDownPayment;
 	private double dPayment;
+	private double income;
+	private double expenses;
+	private double balloonAmount;
+	private boolean pmtPeriod=true;
+	private boolean isAccepted = true;
+	
+	
+	
+	
 	
 	//	TODO - RocketBLL.LoanRequest
 	//			missing attributes...
@@ -17,6 +27,26 @@ public class LoanRequest implements Serializable {
 	//			Expenses
 	//			Add these attributes to the class... add getters and setters.
 	
+	public boolean getIsAccepted(){
+		return this.isAccepted;
+	}
+	
+	public void setIsAccepted(boolean acceptedOrRejected){
+		this.isAccepted = acceptedOrRejected;
+	}
+	
+	public boolean getPmtPeriod() {
+		return this.pmtPeriod;
+	}
+	public void setPmtPeriod(boolean pmtPeriod) {
+		this.pmtPeriod = pmtPeriod;
+	}
+	public double getBalloonAmount() {
+		return balloonAmount;
+	}
+	public void setBalloonAmount(double balloonAmount) {
+		this.balloonAmount = balloonAmount;
+	}
 	public LoanRequest() {
 		super();
 	}
@@ -56,6 +86,17 @@ public class LoanRequest implements Serializable {
 	public void setdPayment(double dPayment) {
 		this.dPayment = dPayment;
 	}
-	
+	public double getIncome() {
+		return income;
+	}
+	public void setIncome(double income) {
+		this.income = income;
+	}
+	public double getExpenses() {
+		return expenses;
+	}
+	public void setExpenses(double expenses) {
+		this.expenses = expenses;
+	}
 	
 }
