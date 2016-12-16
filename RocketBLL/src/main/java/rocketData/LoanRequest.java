@@ -16,17 +16,16 @@ public class LoanRequest implements Serializable {
 	private double balloonAmount;
 	private boolean pmtPeriod=true;
 	private boolean isAccepted = true;
+	private String errorMessage;
 	
-	
-	
-	
-	
-	//	TODO - RocketBLL.LoanRequest
-	//			missing attributes...
-	//			Income
-	//			Expenses
-	//			Add these attributes to the class... add getters and setters.
-	
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
 	public boolean getIsAccepted(){
 		return this.isAccepted;
 	}
@@ -97,6 +96,18 @@ public class LoanRequest implements Serializable {
 	}
 	public void setExpenses(double expenses) {
 		this.expenses = expenses;
+	}
+	
+	public boolean isHouseTooExpensive(){
+		double piti1 = this.income * .28;
+		double piti2 = ((this.income *.36) - this.expenses);
+		double piti = Math.min(piti1, piti2);
+		if(piti >= this.dAmount){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 }

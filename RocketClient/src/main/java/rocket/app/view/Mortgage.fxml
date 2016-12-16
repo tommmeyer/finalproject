@@ -72,24 +72,28 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField prefHeight="40.0" prefWidth="421.0" GridPane.columnIndex="1" />
-            <TextField prefHeight="48.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefHeight="47.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefHeight="44.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField prefHeight="40.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField prefHeight="44.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Enter Loan Request" fx:id = "outputField" GridPane.columnIndex="1" GridPane.rowIndex="8" >
+            	<font>
+                  <Font size="18.0" />
+               	</font>
+            </Label>
+            <TextField fx:id ="creditScoreField" prefHeight="40.0" prefWidth="421.0" GridPane.columnIndex="1" />
+            <TextField fx:id = "loanTotalField" prefHeight="48.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id = "downPaymentField" prefHeight="47.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id = "balloonAmountField" prefHeight="44.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id = "incomeField" prefHeight="40.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id = "expensesField" prefHeight="44.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Payment Period" GridPane.rowIndex="6">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox> prefHeight="27.0" prefWidth="420.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox prefHeight="27.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id ="loanPeriodField" prefHeight="27.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id = "payPeriodField" prefHeight="27.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
               <buttons>
-                <Button mnemonicParsing="false" text="OK" />
-                  <Button mnemonicParsing="false" text="Cancel" />
+                <Button mnemonicParsing="false" text="Calculate Payment" onAction = "#btnCalculatePayment" />
+                  <Button mnemonicParsing="false" text="Cancel" onAction = "#btnCancel" />
               </buttons>
             </ButtonBar>
          </children>

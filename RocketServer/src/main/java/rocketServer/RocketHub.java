@@ -26,22 +26,12 @@ public class RocketHub extends Hub {
 			
 			LoanRequest lq = (LoanRequest) message;
 			
-			//	TODO - RocketHub.messageReceived
-
-			//	You will have to:
-			//	Determine the rate with the given credit score (call RateBLL.getRate)
-			//		If exception, show error message, stop processing
-			//		If no exception, continue
-			//	Determine if payment, call RateBLL.getPayment
-			//	
-			//	you should update lq, and then send lq back to the caller(s)
-			
 			try {
-				 lq.setdRate((RateBLL.getRate(lq.getiCreditScore())));
+				 lq.setdRate((RateBLL.getRate(lq)));
 			} catch (RateException e) {
 				e.printStackTrace();
-				lq.setIsAccepted(false);
-				//sendToAll(lq);
+				sendToAll(lq);
+				
 			}
 			double balance = lq.getdAmount()-lq.getiDownPayment();
 			lq.setdPayment(RateBLL.getPayment(lq.getdRate(), lq.getiTerm(), balance, lq.getBalloonAmount(), lq.getPmtPeriod()));

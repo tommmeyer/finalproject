@@ -1,23 +1,36 @@
 package exceptions;
 
+import rocketData.LoanRequest;
 import rocketDomain.RateDomainModel;
+import rocket.app.view.MortgageController;
 
 public class RateException extends Exception {
+	
+	private LoanRequest badLoan;
+	private String errorMessage;
+	private MortgageController client;
+	
+	public RateException(LoanRequest lq, String problem){
+		this.badLoan = lq;
+		this.errorMessage = problem;
+		this.badLoan.setErrorMessage(this.errorMessage);
+		this.badLoan.setIsAccepted(false);
+	}
+	public RateException(LoanRequest lq, String problem, MortgageController mc){
+		this(lq, problem);
+		this.client = mc;
+		mc.HandleLoanRequestDetails(lq);
+	}
+	
 
-	//	TODO - RocketBLL RateException - RateDomainModel should be an attribute of RateException
-	//	* Add RateRomainModel as an attribute
-	//	* Create a constructor, passing in RateDomainModel
-	//	* Create a getter (no setter, set value only in Constructor)
-	
-	
-	RateDomainModel badCredit;
-	
-	public RateException(RateDomainModel unloanable){
-		this.badCredit = unloanable;
+	public LoanRequest getBadLoan() {
+		return badLoan;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 	
-	public RateDomainModel getBadCredit(){
-		return badCredit;
-	}
+	
 	
 }
